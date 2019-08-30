@@ -22,12 +22,12 @@ end
 
 def bishop_and_pawn(str1, str2)
   arr = convert_chess_notation_to_array(str1).flatten
-	result_ar = []
+	possible_bishop_squares_ar = []
 	i = arr.first
   j = arr.last
 		# up and right
 	while i.between?(0,7) && j.between?(0,7) 
-		result_ar << [i, j] if [i, j] !=arr
+		possible_bishop_squares_ar << [i, j] if [i, j] !=arr
 		i+=1
 		j+=1
 	end
@@ -35,7 +35,7 @@ def bishop_and_pawn(str1, str2)
 	i = arr[0]
   j = arr[1]
 	while i.between?(0,7) && j.between?(0,7) 
-		result_ar << [i, j] if [i, j] !=arr
+		possible_bishop_squares_ar << [i, j] if [i, j] !=arr
 		i+=1
 		j-=1
 	end
@@ -43,7 +43,7 @@ def bishop_and_pawn(str1, str2)
 	i = arr[0]
 	j = arr[1]
 	while i.between?(0,7) && j.between?(0,7) 
-		result_ar << [i, j] if [i, j] !=arr
+		possible_bishop_squares_ar << [i, j] if [i, j] !=arr
 		i-=1
 		j+=1
 	end
@@ -51,21 +51,21 @@ def bishop_and_pawn(str1, str2)
 	i = arr[0]
 	j = arr[1]
 	while i.between?(0,7) && j.between?(0,7) 
-		result_ar << [i, j] if [i, j] !=arr
+		possible_bishop_squares_ar << [i, j] if [i, j] !=arr
 		i-=1
 		j-=1
 	end	
-	result_ar_chess_notation = []
-	result_ar.map do |result|
-		result_ar_chess_notation << convert_array_to_chess_notation(result)
+	x = possible_bishop_squares_ar.map do |result|
+		convert_array_to_chess_notation(result)
 	end
-  print "The bishop at square #{str1} #{compare_squares(result_ar, str2) ? "CAN" : "CAN NOT"} capture the pawn at #{str2}."
+	# p possible_bishop_moves
+	print "The bishop at square #{str1} #{compare_squares(x, str2) ? "CAN" : "CAN NOT"} capture the pawn at #{str2}."
+	compare_squares(x, str2)
 end
 
-def compare_squares(result_ar, str2)
-  p result_ar.include?(str2)
+def compare_squares(x, str2)
+  x.include?(str2)
 end
-
 
 def random_chess_board_square
 	# chessboard_array =[]
@@ -86,13 +86,17 @@ def test_many(num)
   end
 end
 
+# def test_many(num)
+#   result_hash={}
+#   num.times do
+#     x = bishop_and_pawn(random_chess_board_square, random_chess_board_square)
+#     result_hash[x] ? result_hash[x] += 1 : result_hash[x] = 1
+#   end
+#   print result_hash
+# end
+
 test_many(1)
 
 # bishop_and_pawn("a1", "c3")
-# => true
-# bishop_and_pawn("b2", "c3")
-# => true
-# bishop_and_pawn("a2", "c3")
-# => false
 
 # For bishop = "a1" and pawn = "c3", the output should be bishopAndPawn(bishop, pawn) = true.
