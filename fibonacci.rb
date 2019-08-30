@@ -1,3 +1,5 @@
+# print all the Fibonacci numbers up to a certain point
+require "pry"
 def fibo_print(num)
     a=1
     b=1
@@ -40,7 +42,26 @@ def fibonacci_number(num)
     print "\n"
 end
 
+def calculatePhi(num)
+    a=1
+    b=1
+    c=a+b
+    num.times do
+        a=b
+        b=c
+        c=a+b
+    end
+    print "The value of PHI after #{num} iterations is #{c/b.to_f}"
+    print "\n"
+end
+
+
+# print all the Fibonacci numbers up to a certain point
 # fibonacci_number(8)
 
-fibo_print(50)
+# find the number in the Fibonacci series at the corresponding index (zero-indexed)
+# fibo_print(50)
+
+# calculate the constant phi to a certain number of iterations
+calculatePhi(100)
 

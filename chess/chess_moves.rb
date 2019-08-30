@@ -1,20 +1,22 @@
 require "pry"
 
-def convert_chess_notation_to_ar(str)
-  str_ar=str.split("")
-  ar=[]
-  sq_1_final = str_ar[0].ord-97
-  sq_2_final = str_ar[1].to_i-1
-  ar << [sq_1_final, sq_2_final]
+def convert_chess_notation_to_array(str)
+	array_notation_ar = []
+	convert_horizontal_hash = {"a" => 0, "b" => 1, "c" => 2, "d" => 3, "e" => 4, "f"=> 5, "g"=> 6, "h"=> 7}
+	convert_vertical_hash = {"1" => 7, "2" => 6, "3" => 5, "4" => 4, "5" => 3, "6" => 2, "7" => 1, "8" => 0}
+	horizontal_coord = convert_horizontal_hash[(str.split("")[0])]
+	vertical_coord = convert_vertical_hash[(str.split("")[1])]
+	array_notation_ar.push(vertical_coord, horizontal_coord)
 end
-
-def convert_ar_to_chess_notation(ar)
-  first_coord = (ar[0]+97).chr
-  second_coord = ar[1]+1
-  puts first_coord.chr
-  puts second_coord
-  result="#{first_coord}#{second_coord}"
-end
+  
+def convert_array_to_chess_notation(array)
+	# vertical and horizontal are switched here. So array[1] and array[0] are switched too
+	convert_horizontal_hash = {"a" => 0, "b" => 1, "c" => 2, "d" => 3, "e" => 4, "f"=> 5, "g"=> 6, "h"=> 7}
+	convert_vertical_hash = {"1" => 7, "2" => 6, "3" => 5, "4" => 4, "5" => 3, "6" => 2, "7" => 1, "8" => 0}
+	horizontal_coord = convert_horizontal_hash.key(array[1])
+	vertical_coord = convert_vertical_hash.key(array[0])
+	result = "#{horizontal_coord}#{vertical_coord}"
+end   
 
 def chess(str)
   str_ar = str.gsub(/\n/,"").split("\n")
@@ -36,10 +38,6 @@ def chess(str)
   print "possible_q_moves= #{queen_moves(str)}"
   print "possible_n_moves= #{knight_moves(str)}"
 
-  # p rook_moves(str)
-  # p bishop_moves(str)
-  # p queen_moves(str)
-  # p knight_moves(str)
 end
 
 def rook_moves(str)
