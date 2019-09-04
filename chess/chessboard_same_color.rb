@@ -7,8 +7,8 @@ def square_same_color?(str1, str2)
     return "please enter a valid input"
   end
   sums = [sq_1_final, sq_2_final].flatten.sum.even?
-  puts "#{str1} is #{sq_1_final.sum.even? ? "WHITE" : "BLACK"} and"
-  puts "#{str2} is #{sq_2_final.sum.even? ? "WHITE" : "BLACK"}"
+  puts "#{str1} is #{sq_1_final.sum.even? ? "BLACK" : "WHITE"} and"
+  puts "#{str2} is #{sq_2_final.sum.even? ? "BLACK" : "WHITE"}"
   puts "#{str1} and #{str2} #{sums ? 'ARE' : 'ARE NOT'} the same color."
   sums
 end
