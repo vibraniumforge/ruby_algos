@@ -1,9 +1,10 @@
-def to_roman(num)
+def to_roman(input_decimal_number)
   nums_hash = { 1000 => "M", 900 => "CM", 500 => "D", 400 => "CD", 100 => "C", 90 => "XC", 50 => "L", 40 => "XL", 10 => "X", 9 => "IX", 5 => "V", 4 => "IV", 1 => "I" }
 	result_string = ''
-	puts "The roman numeral from #{num} is"
-	nums_hash_keys = nums_hash.keys
-	nums_hash_keys.each do |key|
+	num = input_decimal_number
+	puts "The roman numeral from #{input_decimal_number} is"
+	decimal_numbers = nums_hash.keys
+	decimal_numbers.each do |key|
 		quotient = (num / key).floor
 		if quotient >= 1
 			quotient.times do 
@@ -18,5 +19,5 @@ end
 def randomize
 	to_roman((1...2000).to_a.sample)
 end
-
-randomize()
+to_roman(599)
+# randomize()

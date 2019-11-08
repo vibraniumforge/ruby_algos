@@ -51,6 +51,6 @@ end
   square_same_color?(random_chess_board_square, random_chess_board_square)
   # create random squares and test them
 
-  # test_many()
+  # test_many
   # => {true=>500, false=>500}
 
