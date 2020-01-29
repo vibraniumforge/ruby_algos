@@ -36,8 +36,8 @@ end
 
 puts is_panagram("The uick brown fox jumps over the lazy dog")
 # missing 'q'
-# false
+#=> false
 puts is_panagram("The quick brown fox jumps over the lazy dog")
-# true
+#=> true
 puts is_panagram("hello world")
-# false
+#=> false
