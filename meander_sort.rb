@@ -15,3 +15,4 @@ def meander_sort(array)
 end
 
 meander_sort([5, 3, 4, 1, 2])
+# [1, 2, 3, 4, 5, 6, 7] => [7, 1, 6, 2, 5, 3, 4]
